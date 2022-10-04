@@ -21,7 +21,7 @@ add_executable(
   test.cpp
 )
 target_link_libraries(
-    testsuite
+  testsuite
   GTest::gtest_main
 )
 
