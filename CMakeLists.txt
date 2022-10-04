@@ -19,6 +19,7 @@ enable_testing()
 add_executable(
   testsuite
   test.cpp
+  MarsRover.cpp
 )
 target_link_libraries(
   testsuite
