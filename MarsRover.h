@@ -8,4 +8,5 @@ class MarsRover
 public:
   MarsRover(int x, int y, char direction);
   std::string CurrentState();
+  void Move(char f_or_b);
 };
