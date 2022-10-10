@@ -42,3 +42,18 @@ void MarsRover::Move(char f_or_b)
       break;
   }
 }
+
+void MarsRover::Turn(char l_or_r)
+{
+  switch(l_or_r)
+  {
+    case 'l':
+      direction_ = 'W';
+      break;
+    case 'r':
+      direction_ = 'N';
+      break;
+    default:
+      break;
+  }
+}

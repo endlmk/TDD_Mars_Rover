@@ -9,4 +9,5 @@ public:
   MarsRover(int x, int y, char direction);
   std::string CurrentState();
   void Move(char f_or_b);
+  void Turn(char l_or_r);
 };
