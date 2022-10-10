@@ -45,13 +45,15 @@ void MarsRover::Move(char f_or_b)
 
 void MarsRover::Turn(char l_or_r)
 {
+  std::string directions = "NWSE";
+  const auto index = directions.find(direction_);
   switch(l_or_r)
   {
     case 'l':
-      direction_ = 'W';
+      direction_ = directions[(index + 1) % 4];
       break;
     case 'r':
-      direction_ = 'N';
+      direction_ = directions[(index - 1 + 4) % 4];
       break;
     default:
       break;

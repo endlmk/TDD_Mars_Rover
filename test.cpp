@@ -55,4 +55,25 @@ TEST(MarsRoverTest, CanTurnByCommand) {
     rover.Turn('r');
     EXPECT_STREQ("1 2 N", rover.CurrentState().c_str());
   }
+  {
+    MarsRover rover(1, 2, 'S');
+    rover.Turn('l');
+    EXPECT_STREQ("1 2 E", rover.CurrentState().c_str());
+    rover.Turn('r');
+    EXPECT_STREQ("1 2 S", rover.CurrentState().c_str());
+  }
+  {
+    MarsRover rover(1, 2, 'W');
+    rover.Turn('l');
+    EXPECT_STREQ("1 2 S", rover.CurrentState().c_str());
+    rover.Turn('r');
+    EXPECT_STREQ("1 2 W", rover.CurrentState().c_str());
+  }
+  {
+    MarsRover rover(1, 2, 'E');
+    rover.Turn('l');
+    EXPECT_STREQ("1 2 N", rover.CurrentState().c_str());
+    rover.Turn('r');
+    EXPECT_STREQ("1 2 E", rover.CurrentState().c_str());
+  }
 }
