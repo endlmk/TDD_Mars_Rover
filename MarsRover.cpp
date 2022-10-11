@@ -1,7 +1,7 @@
 #include "MarsRover.h"
 
-MarsRover::MarsRover(int x, int y, char direction) :
-x_(x), y_(y), direction_(direction)
+MarsRover::MarsRover(int x, int y, char direction, Plateau plateau) :
+x_(x), y_(y), direction_(direction), plateau_(plateau)
 {}
 
 std::string MarsRover::CurrentState()
@@ -58,6 +58,8 @@ void MarsRover::Move(char f_or_b)
     default:
       break;
   }
+
+  plateau_.GetPosition(x_, y_, x_, y_);
 }
 
 void MarsRover::Turn(char l_or_r)

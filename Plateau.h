@@ -1,9 +1,9 @@
 #pragma once
 
 class Plateau {
-  int top_;
   int right_;
+  int top_;
 public:  
-  Plateau(int top, int right);
+  Plateau(int right, int top);
   void GetPosition(int x, int y, int& plateau_x, int& plateau_y);
 };
