@@ -16,33 +16,33 @@ TEST(MarsRoverTest, CanOutputCurrentState) {
 TEST(MarsRoverTest, CanMoveByCommand) {
   {
     MarsRover rover(1, 2, 'N');
-    rover.Move('f');
+    rover.ExecuteCommand('f');
     EXPECT_STREQ("1 3 N", rover.CurrentState().c_str());
-    rover.Move('b');
+    rover.ExecuteCommand('b');
     EXPECT_STREQ("1 2 N", rover.CurrentState().c_str());
   }
 
   {
     MarsRover rover(1, 2, 'S');
-    rover.Move('f');
+    rover.ExecuteCommand('f');
     EXPECT_STREQ("1 1 S", rover.CurrentState().c_str());
-    rover.Move('b');
+    rover.ExecuteCommand('b');
     EXPECT_STREQ("1 2 S", rover.CurrentState().c_str());
   }
 
   {
     MarsRover rover(1, 2, 'E');
-    rover.Move('f');
+    rover.ExecuteCommand('f');
     EXPECT_STREQ("2 2 E", rover.CurrentState().c_str());
-    rover.Move('b');
+    rover.ExecuteCommand('b');
     EXPECT_STREQ("1 2 E", rover.CurrentState().c_str());
   }
 
   {
     MarsRover rover(1, 2, 'W');
-    rover.Move('f');
+    rover.ExecuteCommand('f');
     EXPECT_STREQ("0 2 W", rover.CurrentState().c_str());
-    rover.Move('b');
+    rover.ExecuteCommand('b');
     EXPECT_STREQ("1 2 W", rover.CurrentState().c_str());
   }
 }
@@ -50,30 +50,30 @@ TEST(MarsRoverTest, CanMoveByCommand) {
 TEST(MarsRoverTest, CanTurnByCommand) {
   {
     MarsRover rover(1, 2, 'N');
-    rover.Turn('l');
+    rover.ExecuteCommand('l');
     EXPECT_STREQ("1 2 W", rover.CurrentState().c_str());
-    rover.Turn('r');
+    rover.ExecuteCommand('r');
     EXPECT_STREQ("1 2 N", rover.CurrentState().c_str());
   }
   {
     MarsRover rover(1, 2, 'S');
-    rover.Turn('l');
+    rover.ExecuteCommand('l');
     EXPECT_STREQ("1 2 E", rover.CurrentState().c_str());
-    rover.Turn('r');
+    rover.ExecuteCommand('r');
     EXPECT_STREQ("1 2 S", rover.CurrentState().c_str());
   }
   {
     MarsRover rover(1, 2, 'W');
-    rover.Turn('l');
+    rover.ExecuteCommand('l');
     EXPECT_STREQ("1 2 S", rover.CurrentState().c_str());
-    rover.Turn('r');
+    rover.ExecuteCommand('r');
     EXPECT_STREQ("1 2 W", rover.CurrentState().c_str());
   }
   {
     MarsRover rover(1, 2, 'E');
-    rover.Turn('l');
+    rover.ExecuteCommand('l');
     EXPECT_STREQ("1 2 N", rover.CurrentState().c_str());
-    rover.Turn('r');
+    rover.ExecuteCommand('r');
     EXPECT_STREQ("1 2 E", rover.CurrentState().c_str());
   }
 }

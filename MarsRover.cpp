@@ -9,6 +9,23 @@ std::string MarsRover::CurrentState()
     return std::string(std::to_string(x_) + " " + std::to_string(y_) + " " + direction_);
 }
 
+void MarsRover::ExecuteCommand(char command)
+{
+  switch(command)
+  {
+    case 'f':
+    case 'b':
+      Move(command);
+      break;
+    case 'l':
+    case 'r':
+      Turn(command);
+      break;
+    default:
+      break;
+  }
+}
+
 void MarsRover::Move(char f_or_b)
 {
   int move_to_coordinate = 0;
