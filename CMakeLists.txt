@@ -20,6 +20,7 @@ add_executable(
   testsuite
   test.cpp
   MarsRover.cpp
+  Plateau.cpp
 )
 target_link_libraries(
   testsuite
