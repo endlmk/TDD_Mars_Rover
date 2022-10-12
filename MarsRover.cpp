@@ -6,11 +6,23 @@ x_(x), y_(y), direction_(direction), plateau_(plateau)
 
 std::string MarsRover::CurrentState()
 {
-    return std::string(std::to_string(x_) + " " + std::to_string(y_) + " " + direction_);
+  auto state = std::string(std::to_string(x_) + " " +
+              std::to_string(y_) + " " +
+              direction_);
+  if(foundObstacle_)
+  {
+    state += " :Obstacle found, aborted.";
+  }
+  return state;
 }
 
 void MarsRover::ExecuteCommand(char command)
 {
+  if(foundObstacle_)
+  {
+    foundObstacle_ = false;
+  }
+  
   switch(command)
   {
     case 'f':
@@ -23,6 +35,18 @@ void MarsRover::ExecuteCommand(char command)
       break;
     default:
       break;
+  }
+}
+
+void MarsRover::SendSequentialCommand(const std::string& commands)
+{
+  for(const auto& c : commands)
+  {
+    ExecuteCommand(c);
+    if(foundObstacle_)
+    {
+      break;
+    }
   }
 }
 
@@ -41,6 +65,8 @@ void MarsRover::Move(char f_or_b)
       break;
   }
 
+  int prev_x = x_;
+  int prev_y = y_;
   switch(direction_)
   {
     case 'N':
@@ -60,6 +86,12 @@ void MarsRover::Move(char f_or_b)
   }
 
   plateau_.GetPosition(x_, y_, x_, y_);
+  if(plateau_.IsExistObstacle(x_, y_))
+  {
+    foundObstacle_ = true;
+    x_ = prev_x;
+    y_ = prev_y;
+  }
 }
 
 void MarsRover::Turn(char l_or_r)
